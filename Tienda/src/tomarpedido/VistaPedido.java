@@ -7,6 +7,7 @@ package tomarpedido;
 
 import java.util.List;
 import java.util.Scanner;
+import modelos.TipoPizza;
 import modelos.VariedadPizza;
 import tienda.ControladorVistas;
 
@@ -84,6 +85,16 @@ public class VistaPedido implements ContratoVistaPedido {
         
         for (int index = 0; index < variedades.size(); index++) {
             System.out.println("Codigo: " + index + "  -> " + "Variedad: " + variedades.get(index).getNombre());
+            
+        }
+    }
+
+    @Override
+    public void mostrarTiposCoccionDisponibles() {
+        List<TipoPizza> cocciones = this.presentador.obtenerTiposCoccion();
+        
+        for (int index = 0; index < cocciones.size(); index++) {
+            System.out.println("Codigo: " + index + "  -> " + "Coccion: " + cocciones.get(index).getNombre());
             
         }
     }

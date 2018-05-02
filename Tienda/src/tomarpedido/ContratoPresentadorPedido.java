@@ -6,6 +6,7 @@
 package tomarpedido;
 
 import java.util.List;
+import modelos.TipoPizza;
 import modelos.VariedadPizza;
 
 
@@ -18,4 +19,5 @@ public interface ContratoPresentadorPedido {
     public void procesarCoccionSeleccionada(int op);
     public void iniciar();
     public List<VariedadPizza> obtenerVariedades();
+    public List<TipoPizza> obtenerTiposCoccion();
 }

@@ -13,6 +13,7 @@ import menuprincipal.*;
  */
 public interface ContratoVistaPedido {
     public void mostrarVariedadesDisponibles();
+    public void mostrarTiposCoccionDisponibles();
     public void mostrarSeleccionVariedadPizza();
     public void mostrarOPcionErronea();
    

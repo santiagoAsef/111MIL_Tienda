@@ -6,6 +6,7 @@
 package tomarpedido;
 
 import java.util.List;
+import modelos.TipoPizza;
 import modelos.VariedadPizza;
 import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 import tomarpedido.proveedores.ProveedorTomaPedido;
@@ -37,6 +38,7 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
                 break;
             default:
                 this.codigoTipoPizza = op;
+                this.vista.mostrarTiposCoccionDisponibles();
                 this.vista.mostrarSeleccionCoccion();
                 break;
             
@@ -67,5 +69,10 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     @Override
     public List<VariedadPizza> obtenerVariedades() {
         return this.proveedorTomaPedido.obtenerVariedades();
+    }
+
+    @Override
+    public List<TipoPizza> obtenerTiposCoccion() {
+        return this.proveedorTomaPedido.obtenerTipos();
     }
 }

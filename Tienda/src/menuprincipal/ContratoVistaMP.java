@@ -13,4 +13,6 @@ public interface ContratoVistaMP {
    public void mostrarMenuPrincipal();
    public void mostrarOPcionErronea();
    public void irTomarPedido();
+
+    public void mostrarSaludoDespedida();
 }
