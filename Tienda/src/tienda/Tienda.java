@@ -7,7 +7,7 @@ package tienda;
 
 import cancelarpedido.VistaCancelarPedido;
 import estadisticas.VistaEstadisticas;
-
+import facturacion.VistaFacturacion;
 import menuprincipal.VistaMP;
 import tomarpedido.VistaPedido;
 import tomarpedido.proveedores.FalsoProveedorTomaPedido;
@@ -47,6 +47,11 @@ public class Tienda implements ControladorVistas{
     @Override
     public void lanzarEstadisticas() {
         VistaEstadisticas vistaEstadisticas =new VistaEstadisticas(this);
+    }
+    
+    @Override
+    public void lanzarFacturacion() {
+        VistaFacturacion vistaFacturacion = new VistaFacturacion(this);
     }
     
 }
