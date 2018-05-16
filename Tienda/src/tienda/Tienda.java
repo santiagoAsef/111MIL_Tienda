@@ -5,12 +5,12 @@
  */
 package tienda;
 
+import administrar.VistaAdministrar;
 import cancelarpedido.VistaCancelarPedido;
 import estadisticas.VistaEstadisticas;
 import facturacion.VistaFacturacion;
 import menuprincipal.VistaMP;
 import tomarpedido.VistaPedido;
-import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 
 /**
  *
@@ -52,6 +52,11 @@ public class Tienda implements ControladorVistas{
     @Override
     public void lanzarFacturacion() {
         VistaFacturacion vistaFacturacion = new VistaFacturacion(this);
+    }
+
+    @Override
+    public void lanzarAdministrar() {
+        VistaAdministrar vistaAdmin = new VistaAdministrar(this);
     }
     
 }

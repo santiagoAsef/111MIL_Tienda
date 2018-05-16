@@ -26,12 +26,18 @@ public class PresentadorMP implements ContratoPresentadorMP{
                 this.vista.irTomarPedido();
                 break;
             case 2:
+                this.vista.irCancelarPedido();
                 break;
             case 3:
+                this.vista.irFacturar();
                 break;
             case 4:
+                this.vista.irEstadisticas();
                 break;
             case 5:
+                this.vista.irAdministrar();
+                break;
+            case 6:
                 this.vista.mostrarSaludoDespedida();
                 break;
             default:

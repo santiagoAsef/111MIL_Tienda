@@ -29,10 +29,11 @@ public class VistaMP implements ContratoVistaMP {
         System.out.println("\t"+"¡Bienvenidos!"+"\n"+
                 "Ingrese una de las siguientes opciones: "+"\n"+
                 "1) Tomar pedido."+"\n"+
-                "2) Confirmar entrega."+"\n"+
-                "3) Cancelar pedido."+"\n"+
-                "4) Imprimir ticket."+"\n"+
-                "5) Salir."+"\n");
+                "2) Cancelar pedido."+"\n"+
+                "3) Facturar."+"\n"+
+                "4) Estadisiticas."+"\n"+
+                "5) Administrar."+"\n"+
+                "6) Salir."+"\n");
         int opcion=teclado.nextInt();
         presentador.procesarOpcionIngresada(opcion);
     }
@@ -67,5 +68,25 @@ public class VistaMP implements ContratoVistaMP {
     @Override
     public void mostrarSaludoDespedida() {
         System.out.println("Fin de operaciones. Buen dia!");
+    }
+
+    @Override
+    public void irCancelarPedido() {
+        this.controlador.lanzarCancelarPedido();
+    }
+
+    @Override
+    public void irFacturar() {
+        this.controlador.lanzarFacturacion();
+    }
+
+    @Override
+    public void irEstadisticas() {
+        this.controlador.lanzarEstadisticas();
+    }
+
+    @Override
+    public void irAdministrar() {
+        this.controlador.lanzarAdministrar();
     }
 }

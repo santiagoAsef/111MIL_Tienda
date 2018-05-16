@@ -15,4 +15,12 @@ public interface ContratoVistaMP {
    public void irTomarPedido();
 
     public void mostrarSaludoDespedida();
+
+    public void irCancelarPedido();
+
+    public void irFacturar();
+
+    public void irEstadisticas();
+
+    public void irAdministrar();
 }
