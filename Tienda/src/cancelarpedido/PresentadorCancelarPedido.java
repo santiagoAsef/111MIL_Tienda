@@ -33,6 +33,7 @@ public class PresentadorCancelarPedido implements ContratoPresentadorCancelarPed
     public void borrar(int nroPedido) {
         this.proveedor.cancelarPedido(nroPedido);
         this.vista.mostrarPedidos(this.proveedor.obtenerPedidos());
+        
     }
     
     

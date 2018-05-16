@@ -1,25 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package estadisticas;
 
 import estadisticas.proveedores.PedidosFalsos;
 import estadisticas.proveedores.PedidosParaEstadisticas;
-import java.util.ArrayList;
 import java.util.List;
-import menuprincipal.ContratoVistaMP;
 import modelos.DetallePedido;
 import modelos.Pedido;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
-import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 
-/**
- *
- * @author utku38
- */
+
 public class PresentadorEstadisticas implements ContratoPresentadorEstadisticas{
     private final ContratoVistaEstadisticas vista;
     private PedidosParaEstadisticas proveedor;
@@ -71,7 +61,9 @@ public class PresentadorEstadisticas implements ContratoPresentadorEstadisticas{
         }
         List<Pedido> pedidos = this.proveedor.obtenerPedidos();
         for (Pedido pedido : pedidos) {
+
             for (DetallePedido detalle : pedido.getDetallePedido()){
+
                 if(detalle.getPizza().getVariedad().getNombre().equals("Muzzarella")){
                     variedadesPizzas[0]++;
                 }
@@ -81,10 +73,6 @@ public class PresentadorEstadisticas implements ContratoPresentadorEstadisticas{
                 if(detalle.getPizza().getVariedad().getNombre().equals("Especial")){
                     variedadesPizzas[2]++;
                 }
-            }
-        }
-         for (Pedido pedido : pedidos) {
-             for(DetallePedido detalle : pedido.getDetallePedido()){
                 if(detalle.getPizza().getTipoPizza().getNombre().equals("Horno")){
                     tiposPizzas[0]++;
                 }
@@ -96,6 +84,7 @@ public class PresentadorEstadisticas implements ContratoPresentadorEstadisticas{
                 }
             }
         }
+        
          TipoPizza tipoTop = this.proveedor.obtenerTiposPizza().get(this.calcularMayor(tiposPizzas));
          VariedadPizza variedadTop = this.proveedor.obtenerVariedadesPizza().get(this.calcularMayor(variedadesPizzas));
          
