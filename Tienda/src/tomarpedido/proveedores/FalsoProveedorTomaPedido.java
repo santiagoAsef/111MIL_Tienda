@@ -5,10 +5,14 @@
  */
 package tomarpedido.proveedores;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import modelos.Pedido;
+import modelos.Pizza;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
+import modelos.TamanioPizza;
 
 /**
  *
@@ -16,7 +20,9 @@ import modelos.VariedadPizza;
  */
 public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
 
-    private List<VariedadPizza> variedades = Arrays.asList(
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    
+    /*private List<VariedadPizza> variedades = Arrays.asList(
         new VariedadPizza("salame, otros.", "calabresa"),
         new VariedadPizza("jamon, otros.", "especial"),
         new VariedadPizza("queso, otros.", "muzzarella"));
@@ -26,14 +32,25 @@ public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
             new TipoPizza("horno gas", "horno"),
             new TipoPizza("horno lenia", "piedra"));
     
+    private List<TamanioPizza> tamanios = Arrays.asList(
+            new TamanioPizza(8,"Chica"),
+            new TamanioPizza(10,"Mediana"),
+            new TamanioPizza(12,"Grande"));
+    */
+     private List<Pizza> pizzas = Arrays.asList(
+        new Pizza("calagrande", 120.5f,new TamanioPizza(8,"Chica"), new TipoPizza("dsdfsdvsdv", "piedra"), new VariedadPizza("dvsdvsd", "calabresa")));
+    
     @Override
-    public List<VariedadPizza> obtenerVariedades() {
-        return this.variedades;
+    public List<Pizza> obtenerPizzas() {
+        return this.pizzas;
     }
 
     @Override
-    public List<TipoPizza> obtenerTipos() {
-        return this.tipos;
+    public void guardarPedido(Pedido pedido) {
+        pedidos.add(pedido);
     }
+    
+    
+    
     
 }

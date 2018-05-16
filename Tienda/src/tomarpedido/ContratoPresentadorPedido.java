@@ -6,6 +6,8 @@
 package tomarpedido;
 
 import java.util.List;
+import modelos.Pizza;
+import modelos.TamanioPizza;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
 
@@ -15,9 +17,17 @@ import modelos.VariedadPizza;
  * @author utku36
  */
 public interface ContratoPresentadorPedido {
-    public void procesarTipoPizzaIngresado(int op);
-    public void procesarCoccionSeleccionada(int op);
+    public void procesarPizzaSeleccionada(int op);
+    public List<Pizza> obtenerPizzas();
     public void iniciar();
-    public List<VariedadPizza> obtenerVariedades();
-    public List<TipoPizza> obtenerTiposCoccion();
+    public boolean comprobacionOpcion (int max,int op);
+    public void procesarCantidades(int op);
+    public int getCantidad();
+    public int getCodigoPizza();
+    public void procesarConfirmacion(int op);
+    public void procesarNuevoPedido(int op);
+
+    public void procesarNombre(String nombre);
+
+    
 }
