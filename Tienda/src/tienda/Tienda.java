@@ -6,6 +6,8 @@
 package tienda;
 
 import cancelarpedido.VistaCancelarPedido;
+import estadisticas.VistaEstadisticas;
+
 import menuprincipal.VistaMP;
 import tomarpedido.VistaPedido;
 import tomarpedido.proveedores.FalsoProveedorTomaPedido;
@@ -22,7 +24,7 @@ public class Tienda implements ControladorVistas{
     public static void main(String[] args) {
         // TODO code application logic her
         ControladorVistas controlador = new Tienda();
-        controlador.lanzarCancelarPedido();
+        controlador.lanzarMenuPrincipal();
     }
 
     @Override
@@ -42,6 +44,9 @@ public class Tienda implements ControladorVistas{
         
     }
     
-    
+    @Override
+    public void lanzarEstadisticas() {
+        VistaEstadisticas vistaEstadisticas =new VistaEstadisticas(this);
+    }
     
 }

@@ -13,4 +13,5 @@ public interface ControladorVistas {
     public void lanzarMenuPrincipal();
     public void lanzarTomarPedido();
     public void lanzarCancelarPedido();
+    public void lanzarEstadisticas();
 }
