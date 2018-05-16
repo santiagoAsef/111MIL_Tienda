@@ -12,7 +12,6 @@ import modelos.Pedido;
  * @author utku36
  */
 public interface ContratoVistaFacturacion {
-    
     public void listarFacturasPendientes();
     public void mostarOpcionInvalida();
     public void mostrarMenuSecundario();

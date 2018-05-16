@@ -6,6 +6,7 @@
 package facturacion.proveedores;
 
 import java.util.ArrayList;
+import java.util.Date;
 import modelos.DetallePedido;
 import modelos.EstadoPedido;
 import modelos.Factura;
@@ -56,9 +57,20 @@ public class FalsoProveedorFacturacion implements ContratoProveedorFacturacion {
         Factura factura2 = new Factura();
         Factura factura3 = new Factura();
         
-        Pedido pedido1 = new Pedido("Santiago", 1, "05/07/12 12:00", "05/07/12 14:00", factura1, estadoPedido1, detallePedido1);
-        Pedido pedido2 = new Pedido("Esteban", 2, "05/07/12 16:00", "05/07/12 17:30", factura2, estadoPedido2, detallePedido2);
-        Pedido pedido3 = new Pedido("JB", 3, "05/07/12 19:00", "05/07/12 22:00", factura3, estadoPedido3, detallePedido3);
+        Date date1 = new Date(2017, 5, 30);
+        Date date2 = new Date(2017, 6, 05);
+        Date date3 = new Date(2017, 7, 30);
+        Date date4 = new Date(2017, 8, 30);
+        Date date5 = new Date(2017, 9, 30);
+        Date date6 = new Date(2017, 10, 30);
+        
+        Pedido pedido1 = new Pedido("Santiago", 1, date1, date2, factura1, estadoPedido1);
+        Pedido pedido2 = new Pedido("Esteban", 2, date3, date4, factura2, estadoPedido2);
+        Pedido pedido3 = new Pedido("JB", 3, date5, date6, factura3, estadoPedido3);
+        
+        pedido1.agregarDetalleAPedido(detallePedido1);
+        pedido1.agregarDetalleAPedido(detallePedido2);
+        pedido1.agregarDetalleAPedido(detallePedido3);
         
         pedido1.getEstadoPedido().setCodigo(2);
         pedido2.getEstadoPedido().setCodigo(2);

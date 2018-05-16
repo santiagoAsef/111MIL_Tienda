@@ -15,6 +15,5 @@ public interface ControladorVistas {
     public void lanzarCancelarPedido();
     public void lanzarEstadisticas();
     public void lanzarFacturacion();
-
     public void lanzarAdministrar();
 }
