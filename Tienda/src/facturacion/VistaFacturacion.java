@@ -54,11 +54,10 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
         System.out.println(pedido.getNumero() + "       " + pedido.getDetallePedido().get(i).getPrecioOriginalUnitario()
         + "       " + pedido.getDetallePedido().get(i).getPizza().getNombre() + "        " + pedido.getDetallePedido().get(i).getPizza().getTamanioPizza().getCantPorciones()
         + "               " + pedido.getDetallePedido().get(i).getPizza().getTipoPizza().getDescripcion());
-        
+        }
         System.out.println("");
         System.out.println("Total a pagar: " + pedido.calcTotalPedido());
         System.out.println("**** Fin de Factura");
-        }
     }
     
     @Override

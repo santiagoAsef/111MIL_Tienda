@@ -51,8 +51,6 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
     public ArrayList<Pedido> obtenerPedidosPendientes() {
         ArrayList<Pedido> pedidosPendientes = new ArrayList();
         ArrayList<Pedido> pedidosTotales = obtenerPedidos();
-        
-        
         for(Pedido pedido: pedidosTotales) {
             if(pedido.getEstadoPedido().getCodigo() == 2) {
                 pedidosPendientes.add(pedido);
