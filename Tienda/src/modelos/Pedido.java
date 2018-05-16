@@ -118,7 +118,10 @@ public class Pedido {
         this.detalles = detalles;
     }
     
-
+    public void agregarDetalleAPedido(DetallePedido detalle) {
+        detalles.add(detalle);
+    }
+    
     public float calcTotalPedido(){
         float total=0;
         

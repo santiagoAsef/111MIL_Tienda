@@ -50,13 +50,15 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
         System.out.println("");
         
         System.out.println("Cant    PrecioU    NombrePizza    TamanioPizza    Descripcion");
-        System.out.println(pedido.getNumero() + "       " + pedido.getDetallePedido().getPrecioOriginalUnitario()
-        + "       " + pedido.getDetallePedido().getPizza().getNombre() + "        " + pedido.getDetallePedido().getPizza().getTamanioPizza().getCantPorciones()
-        + "               " + pedido.getDetallePedido().getPizza().getTipoPizza().getDescripcion());
+        for(int i = 0; i < pedido.getDetallePedido().size(); i++) {
+        System.out.println(pedido.getNumero() + "       " + pedido.getDetallePedido().get(i).getPrecioOriginalUnitario()
+        + "       " + pedido.getDetallePedido().get(i).getPizza().getNombre() + "        " + pedido.getDetallePedido().get(i).getPizza().getTamanioPizza().getCantPorciones()
+        + "               " + pedido.getDetallePedido().get(i).getPizza().getTipoPizza().getDescripcion());
         
         System.out.println("");
         System.out.println("Total a pagar: " + pedido.calcTotalPedido());
         System.out.println("**** Fin de Factura");
+        }
     }
     
     @Override
