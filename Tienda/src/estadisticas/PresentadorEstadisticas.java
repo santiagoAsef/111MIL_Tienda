@@ -10,6 +10,7 @@ import estadisticas.proveedores.PedidosParaEstadisticas;
 import java.util.ArrayList;
 import java.util.List;
 import menuprincipal.ContratoVistaMP;
+import modelos.DetallePedido;
 import modelos.Pedido;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
@@ -70,26 +71,29 @@ public class PresentadorEstadisticas implements ContratoPresentadorEstadisticas{
         }
         List<Pedido> pedidos = this.proveedor.obtenerPedidos();
         for (Pedido pedido : pedidos) {
-            if(pedido.getDetallePedido().getPizza().getVariedad().getNombre().equals("Muzzarella")){
-                variedadesPizzas[0]++;
+            for (DetallePedido detalle : pedido.getDetallePedido()){
+                if(detalle.getPizza().getVariedad().getNombre().equals("Muzzarella")){
+                    variedadesPizzas[0]++;
+                }
+                if(detalle.getPizza().getVariedad().getNombre().equals("Anana")){
+                    variedadesPizzas[1]++;
+                }
+                if(detalle.getPizza().getVariedad().getNombre().equals("Especial")){
+                    variedadesPizzas[2]++;
+                }
             }
-            if(pedido.getDetallePedido().getPizza().getVariedad().getNombre().equals("Anana")){
-                variedadesPizzas[1]++;
-            }
-            if(pedido.getDetallePedido().getPizza().getVariedad().getNombre().equals("Especial")){
-                variedadesPizzas[2]++;
-            }
-            
         }
          for (Pedido pedido : pedidos) {
-            if(pedido.getDetallePedido().getPizza().getTipoPizza().getNombre().equals("Horno")){
-                tiposPizzas[0]++;
-            }
-            if(pedido.getDetallePedido().getPizza().getTipoPizza().getNombre().equals("Piedra")){
-                tiposPizzas[1]++;
-            }
-            if(pedido.getDetallePedido().getPizza().getTipoPizza().getNombre().equals("Parrilla")){
-                tiposPizzas[2]++;
+             for(DetallePedido detalle : pedido.getDetallePedido()){
+                if(detalle.getPizza().getTipoPizza().getNombre().equals("Horno")){
+                    tiposPizzas[0]++;
+                }
+                if(detalle.getPizza().getTipoPizza().getNombre().equals("Piedra")){
+                    tiposPizzas[1]++;
+                }
+                if(detalle.getPizza().getTipoPizza().getNombre().equals("Parrilla")){
+                    tiposPizzas[2]++;
+                }
             }
         }
          TipoPizza tipoTop = this.proveedor.obtenerTiposPizza().get(this.calcularMayor(tiposPizzas));
