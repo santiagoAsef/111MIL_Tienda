@@ -7,13 +7,11 @@ package estadisticas;
 
 import estadisticas.proveedores.PedidosFalsos;
 import estadisticas.proveedores.PedidosParaEstadisticas;
-import java.util.ArrayList;
 import java.util.List;
-import menuprincipal.ContratoVistaMP;
+import modelos.DetallePedido;
 import modelos.Pedido;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
-import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 
 /**
  *
@@ -70,28 +68,29 @@ public class PresentadorEstadisticas implements ContratoPresentadorEstadisticas{
         }
         List<Pedido> pedidos = this.proveedor.obtenerPedidos();
         for (Pedido pedido : pedidos) {
-            if(pedido.getDetallePedido().getPizza().getVariedad().getNombre().equals("Muzzarella")){
-                variedadesPizzas[0]++;
+            for (DetallePedido detalle : pedido.getDetallePedido()) {
+                if(detalle.getPizza().getVariedad().getNombre().equals("Muzzarella")){
+                    variedadesPizzas[0]++;
+                }
+                if(detalle.getPizza().getVariedad().getNombre().equals("Anana")){
+                    variedadesPizzas[1]++;
+                }
+                if(detalle.getPizza().getVariedad().getNombre().equals("Especial")){
+                    variedadesPizzas[2]++;
+                }
+                
+                if(detalle.getPizza().getTipoPizza().getNombre().equals("Horno")){
+                    tiposPizzas[0]++;
+                }
+                if(detalle.getPizza().getTipoPizza().getNombre().equals("Piedra")){
+                    tiposPizzas[1]++;
+                }
+                if(detalle.getPizza().getTipoPizza().getNombre().equals("Parrilla")){
+                    tiposPizzas[2]++;
+                }
             }
-            if(pedido.getDetallePedido().getPizza().getVariedad().getNombre().equals("Anana")){
-                variedadesPizzas[1]++;
-            }
-            if(pedido.getDetallePedido().getPizza().getVariedad().getNombre().equals("Especial")){
-                variedadesPizzas[2]++;
-            }
-            
         }
-         for (Pedido pedido : pedidos) {
-            if(pedido.getDetallePedido().getPizza().getTipoPizza().getNombre().equals("Horno")){
-                tiposPizzas[0]++;
-            }
-            if(pedido.getDetallePedido().getPizza().getTipoPizza().getNombre().equals("Piedra")){
-                tiposPizzas[1]++;
-            }
-            if(pedido.getDetallePedido().getPizza().getTipoPizza().getNombre().equals("Parrilla")){
-                tiposPizzas[2]++;
-            }
-        }
+        
          TipoPizza tipoTop = this.proveedor.obtenerTiposPizza().get(this.calcularMayor(tiposPizzas));
          VariedadPizza variedadTop = this.proveedor.obtenerVariedadesPizza().get(this.calcularMayor(variedadesPizzas));
          
