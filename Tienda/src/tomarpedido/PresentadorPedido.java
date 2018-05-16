@@ -5,9 +5,12 @@
  */
 package tomarpedido;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import modelos.TipoPizza;
-import modelos.VariedadPizza;
+import modelos.DetallePedido;
+import modelos.Pedido;
+import modelos.Pizza;
 import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 import tomarpedido.proveedores.ProveedorTomaPedido;
 
@@ -20,9 +23,21 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     
     private final ContratoVistaPedido vista;
     private final ProveedorTomaPedido proveedorTomaPedido;
-    private int codigoTipoPizza;
-    private int codigoCoccion;
-    
+    private int codigoPizza;
+    private int cantidad;
+    private String nombre;
+    private ArrayList<DetallePedido> detalles = new ArrayList<>();
+
+
+    @Override
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    @Override
+    public int getCodigoPizza() {
+        return codigoPizza;
+    }
 
     public PresentadorPedido(ContratoVistaPedido vista) {
         this.vista = vista;
@@ -31,48 +46,99 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     
     
     @Override
-    public void procesarTipoPizzaIngresado(int op){
-        switch(op){
-            case 0:
-                this.vista.irMenuPrincipal();
-                break;
-            default:
-                this.codigoTipoPizza = op;
-                this.vista.mostrarTiposCoccionDisponibles();
-                this.vista.mostrarSeleccionCoccion();
-                break;
-            
-        }
-    }
-    @Override
     public void iniciar(){
-        this.vista.mostrarVariedadesDisponibles();
-        this.vista.mostrarSeleccionVariedadPizza();
+        this.vista.mostrarPizzasDisponibles();
+        this.vista.mostrarSeleccionPizza();
+    }
+    
+    @Override
+    public void procesarPizzaSeleccionada(int op) {
+        if(comprobacionOpcion(obtenerPizzas().size(), op)){
+            switch(op){
+            case -1:
+                this.vista.irMenuPrincipal();
+                break;
+            default:
+                codigoPizza = op;
+                this.vista.mostrarSeleccionCantidad();
+            }
+        }else{
+            this.vista.mostrarOPcionErronea();
+            iniciar();
+        }
+        
+    }
+    
+    @Override
+    public void procesarCantidades(int op){
+        if(op>0){
+            cantidad= op;
+            this.vista.confirmacion();
+        }else{
+            this.vista.mostrarOPcionErronea();
+            this.vista.mostrarSeleccionCantidad();
+        }
+    }
+    
+    
+        
+
+    @Override
+    public List<Pizza> obtenerPizzas() {
+        return proveedorTomaPedido.obtenerPizzas();
     }
 
     @Override
-    public void procesarCoccionSeleccionada(int op) {
+    public boolean comprobacionOpcion(int max, int op) {
+        return op<max;
+    }
+
+    @Override
+    public void procesarConfirmacion(int op) {
         switch(op){
-            case 0:
-                this.vista.irMenuPrincipal();
-                break;
             case 1:
-                this.vista.mostrarSeleccionVariedadPizza();
+                agregarDetallePizza();
+                this.vista.mostrarPreguntaNuevoPedido();
+                break;
+            case 2:
+                iniciar();
                 break;
             default:
-                this.codigoCoccion = op;
-                this.vista.irMenuPrincipal();
+                this.vista.mostrarOPcionErronea();
+                this.vista.confirmacion();
                 break;
         }
     }
 
     @Override
-    public List<VariedadPizza> obtenerVariedades() {
-        return this.proveedorTomaPedido.obtenerVariedades();
+    public void procesarNuevoPedido(int op) {
+         switch(op){
+            case 1:
+                iniciar();
+                break;
+            case 2:
+                this.vista.mostrarPreguntarNombre();
+                Date fechaCreacion = new Date(0, 0, 0, 0, 0);
+                Pedido nuevo = new Pedido(nombre, 0, fechaCreacion, null, null, null);
+                nuevo.agregarDetalleDePedido(detalles);
+                this.proveedorTomaPedido.guardarPedido(nuevo);
+                this.vista.irMenuPrincipal();
+                break;
+            default:
+                this.vista.mostrarOPcionErronea();
+                this.vista.mostrarPreguntaNuevoPedido();
+                break;
+        }
     }
 
     @Override
-    public List<TipoPizza> obtenerTiposCoccion() {
-        return this.proveedorTomaPedido.obtenerTipos();
+    public void procesarNombre(String nombre) {
+        this.nombre=nombre;
     }
+    
+    public void agregarDetallePizza() {
+    detalles.add(new DetallePedido(cantidad,this.proveedorTomaPedido.obtenerPizzas().get(codigoPizza)));
+    }
+    
+    
 }

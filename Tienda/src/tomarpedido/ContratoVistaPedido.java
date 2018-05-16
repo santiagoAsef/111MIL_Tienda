@@ -12,14 +12,13 @@ import menuprincipal.*;
  * @author utku36
  */
 public interface ContratoVistaPedido {
-    public void mostrarVariedadesDisponibles();
-    public void mostrarTiposCoccionDisponibles();
-    public void mostrarSeleccionVariedadPizza();
+    public void mostrarPizzasDisponibles();
+    public void mostrarSeleccionPizza();
     public void mostrarOPcionErronea();
-   
-
+    public void mostrarSeleccionCantidad();
     public void irMenuPrincipal();
+    public void confirmacion();
+    public void mostrarPreguntaNuevoPedido();
 
-    public void mostrarSeleccionCoccion();
-   
+    public void mostrarPreguntarNombre();
 }
